@@ -16,7 +16,6 @@ public class MenuActivity extends Activity {
 		setContentView(R.layout.activity_menu);
 		
 		Button quit = (Button) findViewById(R.id.buttonQuit);
-		
 		quit.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				finish();
@@ -24,10 +23,17 @@ public class MenuActivity extends Activity {
 		});
 		
 		Button play = (Button) findViewById(R.id.buttonPlay);
-		
 		play.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(MenuActivity.this, GameActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		Button scores = (Button) findViewById(R.id.buttonScores);
+		scores.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(MenuActivity.this, HighScoresActivity.class);
 				startActivity(intent);
 			}
 		});

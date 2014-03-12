@@ -26,8 +26,9 @@
         android:layout_below="@+id/textViewTitle1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Splash Bubble !"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+    	android:textSize="42sp" />
 
     <Button
         android:id="@+id/buttonPlay"
@@ -35,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Jouer" />
+        android:text="@string/play" />
 
     <Button
         android:id="@+id/buttonScores"
@@ -44,15 +45,25 @@
         android:layout_below="@+id/buttonPlay"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Scores" />
+        android:text="@string/highScores" />
 
     <Button
         android:id="@+id/buttonQuit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonScores"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="Quitter" />
+        android:layout_marginBottom="50dp"
+        android:text="@string/quit" />
+
+    <TextView
+        android:id="@+id/textVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/version_name"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#242424" />
 
 </RelativeLayout>

@@ -13,8 +13,6 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-
-
 public class GameView extends SurfaceView {
 	private GameLoopThread gameLoopThread;
 	private List<Sprite> sprites = new ArrayList<Sprite>();
@@ -118,5 +116,9 @@ public class GameView extends SurfaceView {
 			}
 		}
 		return true;
+	}
+	
+	public int getScore() {
+		return score;
 	}
 }

@@ -3,8 +3,6 @@ package com.gadgetomobile.splashbubble;
 import java.util.Random;
 import android.graphics.Canvas;
 
-
-
 public class GameLoopThread extends Thread {
 
 	static final long FPS = 20;
