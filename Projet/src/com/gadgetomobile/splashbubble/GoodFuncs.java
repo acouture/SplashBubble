@@ -17,10 +17,11 @@ public class GoodFuncs {
 		for(int i = 0 ; i < NB_SCORES ; i++)
 			scores[i] = 0;
 		
+		int i = 0;
     	try {
     		if(inputStream != null) {
     			DataInputStream buf = new DataInputStream(inputStream);
-    			for(int i = 0 ; i < NB_SCORES ; i++) {
+    			for(i = 0 ; i < NB_SCORES ; i++) {
     				scores[i] = buf.readInt();
     			}
     			inputStream.close();
@@ -29,11 +30,18 @@ public class GoodFuncs {
     		e.printStackTrace();
     	} catch (EOFException e) {
     		e.printStackTrace();
+			try {
+				inputStream.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
     	}catch (IOException e) {
     		e.printStackTrace();
     	}
-    	for(int i = 0 ; i < NB_SCORES ; i++)
+    	System.out.println("Readed scores :");
+    	for(i = 0 ; i < NB_SCORES ; i++)
     		System.out.println("Get Score " + i + " = " + scores[i]);
+    	System.out.println("End");
     	return scores;
 	}
 	

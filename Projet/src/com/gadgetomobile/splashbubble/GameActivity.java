@@ -34,6 +34,7 @@ public class GameActivity extends Activity {
 //    	} catch (IOException e) {
 //    		e.printStackTrace();
 //    	}
+    	System.out.println("onBackPressed()");
     	try {
 			GoodFuncs.setHighScores(GoodFuncs.getHighScores(openFileInput(getResources().getString(R.string.highScoresFile))),
 					openFileOutput(getResources().getString(R.string.highScoresFile), MODE_PRIVATE), view.getScore());
