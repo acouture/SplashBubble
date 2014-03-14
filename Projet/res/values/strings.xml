@@ -9,6 +9,6 @@
     <string name="highScoresFile">highScores</string>
     <string name="defaultScore">0</string>
     <string name="back">Retour</string>
-    <string name="version_name">1.2.1</string>
+    <string name="version_name">1.2.2</string>
 
 </resources>

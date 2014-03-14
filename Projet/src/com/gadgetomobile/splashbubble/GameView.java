@@ -69,7 +69,6 @@ public class GameView extends SurfaceView {
 
 	public void stop() {
 		gameLoopThread.setRunning(false);
-		gameLoopThread.stop();
 	}
 
 

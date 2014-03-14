@@ -24,7 +24,6 @@ public class MenuActivity extends Activity {
 		Button quit = (Button) findViewById(R.id.buttonQuit);
 		quit.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				System.out.println("Quit");
 				finish();
 			}
 		});
@@ -32,7 +31,6 @@ public class MenuActivity extends Activity {
 		Button play = (Button) findViewById(R.id.buttonPlay);
 		play.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				System.out.println("Play");
 				Intent intent = new Intent(MenuActivity.this, GameActivity.class);
 				startActivity(intent);
 			}
@@ -41,7 +39,6 @@ public class MenuActivity extends Activity {
 		Button scores = (Button) findViewById(R.id.buttonScores);
 		scores.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				System.out.println("Scores");
 				Intent intent = new Intent(MenuActivity.this, HighScoresActivity.class);
 				startActivity(intent);
 			}
@@ -74,7 +71,6 @@ public class MenuActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu, menu);
-		System.out.println("onCreateOptionsMenu(Menu menu)");
 		return true;
 	}
 
