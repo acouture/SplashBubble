@@ -63,6 +63,7 @@ public class GameView extends SurfaceView {
 	}
 
 	public void start() {
+		gameLoopThread = new GameLoopThread(this);
 		gameLoopThread.setRunning(true);
 		gameLoopThread.start();
 	}
