@@ -148,7 +148,8 @@ a.button:hover {
 }
 
 a.button span {
-  #padding-left: 50px;
+  background: transparent url(../images/icon_download.png) 5px 50% no-repeat;
+  padding-left: 25px;
   display: block;
   height: 23px;
 }
