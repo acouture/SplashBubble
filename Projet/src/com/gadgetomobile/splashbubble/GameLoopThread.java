@@ -1,5 +1,6 @@
 package com.gadgetomobile.splashbubble;
 
+import java.util.List;
 import java.util.Random;
 import android.graphics.Canvas;
 
@@ -10,13 +11,23 @@ public class GameLoopThread extends Thread {
 	private GameView view;
 
 	private boolean running = false;
-
+	
+	boolean touched = false;
+	float xTouched = 0;
+	float yTouched = 0;
+	
+	List<Sprite> sprites;
 	public GameLoopThread(GameView view) {
 		this.view = view;
+		sprites = view.getSprites();
 	}
 
 	public void setRunning(boolean run) {
 		running = run;
+	}
+	
+	public boolean isRunning() {
+		return running;
 	}
 
 	@Override
@@ -30,10 +41,27 @@ public class GameLoopThread extends Thread {
 		long nextSpawnTime = System.currentTimeMillis() + rnd.nextLong() % 4000;
 
 		while (running) {
-
+			
+			// Gestion des "clicks"
+			if(touched) {
+				synchronized (view.getHolder()) {
+					for (int i = sprites.size() - 1; i >= 0; i--) {
+						Sprite sprite = sprites.get(i);
+						if (sprite.isCollision(xTouched, yTouched)) {
+							sprites.remove(sprite);
+							//temps.add(new TempSprite(temps, this, x, y, bmpBlood));
+							view.setScore(view.getScore() + 1);
+							break;
+						}
+					}
+				}
+				touched = false;
+			}
+			
 			Canvas c = null;
 			startTime = System.currentTimeMillis();
-
+			
+			// Création des nouvelles bulles
 			if(startTime > nextSpawnTime) {
 				int bubble_color = ( rnd.nextInt() % 4 );
 				switch(bubble_color) {
@@ -57,7 +85,8 @@ public class GameLoopThread extends Thread {
 				rnd = new Random();
 				nextSpawnTime = System.currentTimeMillis()+ 500 + rnd.nextLong() % 1500;
 			}
-
+			
+			// Dessin
 			try {
 				c = view.getHolder().lockCanvas();
 				synchronized (view.getHolder()) {
@@ -68,7 +97,8 @@ public class GameLoopThread extends Thread {
 					view.getHolder().unlockCanvasAndPost(c);
 				}
 			}
-
+			
+			// Attente pour bon fps
 			sleepTime = ticksPS - (System.currentTimeMillis() - startTime);
 
 			try {
@@ -77,6 +107,14 @@ public class GameLoopThread extends Thread {
 				else
 					sleep(10);
 			} catch (Exception e) {}
+		}
+	}
+
+	public void touchEvent(float x, float y) {
+		if(running) {
+			touched = true;
+			xTouched = x;
+			yTouched = y;
 		}
 	}
 }

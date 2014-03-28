@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 public class GameActivity extends Activity {
 
@@ -33,7 +34,20 @@ public class GameActivity extends Activity {
 	
 	@Override
 	public void onOptionsMenuClosed(Menu menu) {
-		view.start();
+		if(!view.isRunning())
+			view.restart();
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_play_pause:
+			view.restart();
+			return true;
+		case R.id.action_settings:
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 	
     @Override

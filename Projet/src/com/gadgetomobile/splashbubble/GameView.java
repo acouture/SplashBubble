@@ -62,7 +62,7 @@ public class GameView extends SurfaceView {
 		bg = new Rect(0, 0, screen_width, screen_height);
 	}
 
-	public void start() {
+	public void restart() {
 		gameLoopThread = new GameLoopThread(this);
 		gameLoopThread.setRunning(true);
 		gameLoopThread.start();
@@ -72,6 +72,9 @@ public class GameView extends SurfaceView {
 		gameLoopThread.setRunning(false);
 	}
 
+	public boolean isRunning() {
+		return gameLoopThread.isRunning();
+	}
 
 	private Sprite createSprite(int resource) {
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), resource);
@@ -100,25 +103,20 @@ public class GameView extends SurfaceView {
 
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
 			System.currentTimeMillis();
-			float x = event.getX();
-			float y = event.getY();
-
-			synchronized (getHolder()) {
-				for (int i = sprites.size() - 1; i >= 0; i--) {
-					Sprite sprite = sprites.get(i);
-					if (sprite.isCollision(x, y)) {
-						sprites.remove(sprite);
-						//temps.add(new TempSprite(temps, this, x, y, bmpBlood));
-						score++;
-						break;
-					}
-				}
-			}
+			gameLoopThread.touchEvent(event.getX(), event.getY());
 		}
 		return true;
 	}
 	
 	public int getScore() {
 		return score;
+	}
+	
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	public List<Sprite> getSprites() {
+		return sprites;
 	}
 }
