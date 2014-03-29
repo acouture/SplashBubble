@@ -44,8 +44,7 @@ public class GameView extends SurfaceView {
 
 			@Override
 			public void surfaceCreated(SurfaceHolder holder) {
-				gameLoopThread.setRunning(true);
-				gameLoopThread.start();
+				start();
 			}
 
 			@Override
@@ -62,7 +61,7 @@ public class GameView extends SurfaceView {
 		bg = new Rect(0, 0, screen_width, screen_height);
 	}
 
-	public void restart() {
+	public void start() {
 		gameLoopThread = new GameLoopThread(this);
 		gameLoopThread.setRunning(true);
 		gameLoopThread.start();

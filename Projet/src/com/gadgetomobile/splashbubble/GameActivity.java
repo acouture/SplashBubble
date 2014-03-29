@@ -2,13 +2,13 @@ package com.gadgetomobile.splashbubble;
 
 import java.io.FileNotFoundException;
 
-import android.app.Activity;
 import android.content.res.Resources.NotFoundException;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class GameActivity extends Activity {
+public class GameActivity extends BaseActivity {
 
     /** Called when the activity is first created. */
 	GameView view;
@@ -35,14 +35,26 @@ public class GameActivity extends Activity {
 	@Override
 	public void onOptionsMenuClosed(Menu menu) {
 		if(!view.isRunning())
-			view.restart();
+			view.start();
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_play_pause:
-			view.restart();
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		        if (view.isRunning()) {
+		        	item.setIcon(android.R.drawable.ic_media_play);
+		        	view.stop();
+		        }
+		        else {
+		        	item.setIcon(android.R.drawable.ic_media_pause);
+		        	view.start();
+		        }
+		    }
+			else {
+				view.start();
+			}
 			return true;
 		case R.id.action_settings:
 		default:
@@ -53,6 +65,7 @@ public class GameActivity extends Activity {
     @Override
     public void onBackPressed() {
     	view.stop();
+    	// Sauvegarde des scores
     	try {
 			GoodFuncs.setHighScores(GoodFuncs.getHighScores(openFileInput(getResources().getString(R.string.highScoresFile))),
 					openFileOutput(getResources().getString(R.string.highScoresFile), MODE_PRIVATE), view.getScore());
