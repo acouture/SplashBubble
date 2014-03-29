@@ -18,6 +18,12 @@ public class GameActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(view = new GameView(this));
     }
+    
+    @Override
+    public void onPause() {
+    	super.onPause();
+    	view.stop();
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
