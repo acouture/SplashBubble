@@ -9,7 +9,7 @@
     <string name="highScoresFile">highScores</string>
     <string name="defaultScore">0</string>
     <string name="back">Retour</string>
-    <string name="version_name">1.2.3</string>
+    <string name="version_name">1.2.4-beta</string>
     <string name="action_resume">Reprendre</string>
     <string name="action_play_pause">Jouer/Pause</string>
     <string name="title_activity_base">BaseActivity</string>
