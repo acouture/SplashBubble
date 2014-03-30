@@ -8,7 +8,7 @@ public class BaseActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+		if (isAPILowerThanHoneycomb()) {
 	        setTheme(android.R.style.Theme_NoTitleBar);
 		}
 		else {
@@ -16,5 +16,9 @@ public class BaseActivity extends Activity {
 		}
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.base);
+	}
+	
+	public boolean isAPILowerThanHoneycomb() {
+		return Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB;
 	}
 }

@@ -12,6 +12,7 @@ public class GameActivity extends BaseActivity {
 
     /** Called when the activity is first created. */
 	GameView view;
+	MenuItem itemPlayPause;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,11 +30,20 @@ public class GameActivity extends BaseActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.game, menu);
+		if(isAPILowerThanHoneycomb()) {
+			menu.removeItem(R.id.action_play_pause);
+		}
+		else {
+			itemPlayPause = menu.findItem(R.id.action_play_pause);
+		}
 		return true;
 	}
 	
 	@Override
 	public boolean onMenuOpened(int featureId, Menu menu) {
+		if(!isAPILowerThanHoneycomb()) {
+			itemPlayPause.setIcon(android.R.drawable.ic_media_play);
+		}
 		view.stop();
 		return true;
 	}
@@ -48,17 +58,12 @@ public class GameActivity extends BaseActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_play_pause:
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-		        if (view.isRunning()) {
-		        	item.setIcon(android.R.drawable.ic_media_play);
-		        	view.stop();
-		        }
-		        else {
-		        	item.setIcon(android.R.drawable.ic_media_pause);
-		        	view.start();
-		        }
-		    }
+			if (view.isRunning()) {
+				item.setIcon(android.R.drawable.ic_media_play);
+				view.stop();
+			}
 			else {
+				item.setIcon(android.R.drawable.ic_media_pause);
 				view.start();
 			}
 			return true;
