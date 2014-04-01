@@ -49,6 +49,9 @@ public class GameActivity extends BaseActivity {
 	
 	@Override
 	public void onOptionsMenuClosed(Menu menu) {
+		if(!isAPILowerThanHoneycomb()) {
+			itemPlayPause.setIcon(android.R.drawable.ic_media_pause);
+		}
 		if(!view.isRunning())
 			view.start();
 	}
