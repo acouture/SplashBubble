@@ -3,7 +3,6 @@ package com.gadgetomobile.splashbubble;
 import java.io.FileNotFoundException;
 
 import android.content.res.Resources.NotFoundException;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
