@@ -1,6 +1,7 @@
 package com.gadgetomobile.splashbubble;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -15,6 +16,7 @@ public class BaseActivity extends Activity {
 			setTheme(android.R.style.Theme_Holo);
 		}
 		super.onCreate(savedInstanceState);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(R.layout.base);
 	}
 	
