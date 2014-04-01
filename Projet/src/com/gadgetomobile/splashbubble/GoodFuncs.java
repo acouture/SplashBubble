@@ -38,24 +38,17 @@ public class GoodFuncs {
     	}catch (IOException e) {
     		e.printStackTrace();
     	}
-//    	System.out.println("Readed scores :");
-//    	for(i = 0 ; i < NB_SCORES ; i++)
-//    		System.out.println("Get Score " + i + " = " + scores[i]);
-//    	System.out.println("End");
     	return scores;
 	}
 	
 	static void setHighScores(Integer[] scores, FileOutputStream outputStream, int newScore) {
 		int i = 0;
 		while(i < NB_SCORES) {
-//			System.out.println("cmp " + newScore + " < " + scores[i] + " ?");
 			if(newScore < scores[i])
 				i++;
 			else
 				break;
 		}
-		
-//		System.out.println("Save score " + newScore + " at rank " + i);
 		
 		try {
 			if(outputStream != null) {
