@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/layout_ui"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/text_score"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:text="@string/defaultScore"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textSize="35sp" />
 
         <ImageButton
             android:id="@+id/action_play_pause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:src="@android:drawable/ic_media_pause"
-            android:contentDescription="@string/action_play_pause" />
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/action_play_pause"
+            android:src="@android:drawable/ic_media_pause" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/game_view_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal" >
         
     </RelativeLayout>

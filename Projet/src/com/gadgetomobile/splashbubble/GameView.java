@@ -14,6 +14,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 public class GameView extends SurfaceView {
+	private GameActivity gameActivity;
 	private GameLoopThread gameLoopThread;
 	private List<Sprite> sprites = new ArrayList<Sprite>();
 	private List<TempSprite> temps = new ArrayList<TempSprite>();
@@ -24,6 +25,11 @@ public class GameView extends SurfaceView {
 
 	public GameView(Context context) {
 		super(context);
+	}
+	
+	public GameView(Context context, GameActivity parentActivity) {
+		super(context);
+		this.gameActivity = parentActivity;
 		gameLoopThread = new GameLoopThread(this);
 		score = 0;
 		score_paint = new Paint();
@@ -94,8 +100,6 @@ public class GameView extends SurfaceView {
 		for (Sprite sprite : sprites) {
 			sprite.draw(canvas);
 		}
-
-		canvas.drawText("Score : " + score, 10, 50, score_paint);
 	}
 
 	public boolean onTouchEvent(MotionEvent event) {
@@ -103,6 +107,7 @@ public class GameView extends SurfaceView {
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
 			System.currentTimeMillis();
 			gameLoopThread.touchEvent(event.getX(), event.getY());
+			gameActivity.updateScore();
 		}
 		return true;
 	}
@@ -111,8 +116,8 @@ public class GameView extends SurfaceView {
 		return score;
 	}
 	
-	public void setScore(int score) {
-		this.score = score;
+	public void updateScore(int toAdd) {
+		score += toAdd;
 	}
 	
 	public List<Sprite> getSprites() {

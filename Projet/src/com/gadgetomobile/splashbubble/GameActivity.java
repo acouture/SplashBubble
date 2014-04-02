@@ -10,18 +10,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class GameActivity extends BaseActivity {
 
     /** Called when the activity is first created. */
 	GameView view;
 	ImageButton buttonPlayPause;
+	TextView textScore;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        ((RelativeLayout) findViewById(R.id.game_view_layout)).addView(view = new GameView(this));
+        ((RelativeLayout) findViewById(R.id.game_view_layout)).addView(view = new GameView(this, GameActivity.this));
+        
+        textScore = (TextView) findViewById(R.id.text_score);
         
         buttonPlayPause = (ImageButton) findViewById(R.id.action_play_pause);
         buttonPlayPause.setOnClickListener(new OnClickListener() {
@@ -87,4 +91,8 @@ public class GameActivity extends BaseActivity {
 		}
     	finish();
     }
+    
+    public void updateScore() {
+    	textScore.setText("Score : " + view.getScore());
+	}
 }

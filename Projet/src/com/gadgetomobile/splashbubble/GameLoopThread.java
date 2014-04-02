@@ -12,10 +12,6 @@ public class GameLoopThread extends Thread {
 
 	private boolean running = false;
 	
-	boolean touched = false;
-	float xTouched = 0;
-	float yTouched = 0;
-	
 	List<Sprite> sprites;
 	public GameLoopThread(GameView view) {
 		this.view = view;
@@ -41,22 +37,6 @@ public class GameLoopThread extends Thread {
 		long nextSpawnTime = System.currentTimeMillis() + rnd.nextLong() % 4000;
 
 		while (running) {
-			
-			// Gestion des "clicks"
-			if(touched) {
-				synchronized (view.getHolder()) {
-					for (int i = sprites.size() - 1; i >= 0; i--) {
-						Sprite sprite = sprites.get(i);
-						if (sprite.isCollision(xTouched, yTouched)) {
-							sprites.remove(sprite);
-							//temps.add(new TempSprite(temps, this, x, y, bmpBlood));
-							view.setScore(view.getScore() + 1);
-							break;
-						}
-					}
-				}
-				touched = false;
-			}
 			
 			Canvas c = null;
 			startTime = System.currentTimeMillis();
@@ -110,11 +90,18 @@ public class GameLoopThread extends Thread {
 		}
 	}
 
-	public void touchEvent(float x, float y) {
-		if(running) {
-			touched = true;
-			xTouched = x;
-			yTouched = y;
+	public boolean touchEvent(float x, float y) {
+		synchronized (view.getHolder()) {
+			for (int i = sprites.size() - 1; i >= 0; i--) {
+				Sprite sprite = sprites.get(i);
+				if (sprite.isCollision(x, y)) {
+					sprites.remove(sprite);
+					//temps.add(new TempSprite(temps, this, x, y, bmpBlood));
+					view.updateScore(1);
+					break;
+				}
+			}
 		}
+		return true;
 	}
 }
