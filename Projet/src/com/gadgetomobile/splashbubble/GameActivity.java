@@ -6,17 +6,37 @@ import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 public class GameActivity extends BaseActivity {
 
     /** Called when the activity is first created. */
 	GameView view;
-	MenuItem itemPlayPause;
+	ImageButton buttonPlayPause;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(view = new GameView(this));
+        setContentView(R.layout.activity_game);
+        ((RelativeLayout) findViewById(R.id.game_view_layout)).addView(view = new GameView(this));
+        
+        buttonPlayPause = (ImageButton) findViewById(R.id.action_play_pause);
+        buttonPlayPause.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				ImageButton me = (ImageButton) v;
+				if (view.isRunning()) {
+					me.setImageResource(android.R.drawable.ic_media_play);
+					view.stop();
+				}
+				else {
+					me.setImageResource(android.R.drawable.ic_media_pause);
+					view.start();
+				}
+			}
+		});
     }
     
     @Override
@@ -29,46 +49,24 @@ public class GameActivity extends BaseActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.game, menu);
-		if(isAPILowerThanHoneycomb()) {
-			menu.removeItem(R.id.action_play_pause);
-		}
-		else {
-			itemPlayPause = menu.findItem(R.id.action_play_pause);
-		}
 		return true;
 	}
 	
 	@Override
 	public boolean onMenuOpened(int featureId, Menu menu) {
-		if(!isAPILowerThanHoneycomb()) {
-			itemPlayPause.setIcon(android.R.drawable.ic_media_play);
-		}
+		buttonPlayPause.setImageResource(android.R.drawable.ic_media_play);
 		view.stop();
 		return true;
 	}
 	
 	@Override
 	public void onOptionsMenuClosed(Menu menu) {
-		if(!isAPILowerThanHoneycomb()) {
-			itemPlayPause.setIcon(android.R.drawable.ic_media_pause);
-		}
-		if(!view.isRunning())
-			view.start();
+		
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.action_play_pause:
-			if (view.isRunning()) {
-				item.setIcon(android.R.drawable.ic_media_play);
-				view.stop();
-			}
-			else {
-				item.setIcon(android.R.drawable.ic_media_pause);
-				view.start();
-			}
-			return true;
 		case R.id.action_settings:
 		default:
 			return super.onOptionsItemSelected(item);

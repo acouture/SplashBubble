@@ -7,7 +7,7 @@
     <string name="highScores">Meilleurs scores</string>
     <string name="quit">Quitter</string>
     <string name="highScoresFile">highScores</string>
-    <string name="defaultScore">0</string>
+    <string name="defaultScore">Score : </string>
     <string name="back">Retour</string>
     <string name="version_name">1.2.4-beta</string>
     <string name="action_resume">Reprendre</string>
