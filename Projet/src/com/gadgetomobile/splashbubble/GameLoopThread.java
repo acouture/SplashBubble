@@ -91,14 +91,16 @@ public class GameLoopThread extends Thread {
 	}
 
 	public boolean touchEvent(float x, float y) {
-		synchronized (view.getHolder()) {
-			for (int i = sprites.size() - 1; i >= 0; i--) {
-				Sprite sprite = sprites.get(i);
-				if (sprite.isCollision(x, y)) {
-					sprites.remove(sprite);
-					//temps.add(new TempSprite(temps, this, x, y, bmpBlood));
-					view.updateScore(1);
-					break;
+		if(isRunning()) {
+			synchronized (view.getHolder()) {
+				for (int i = sprites.size() - 1; i >= 0; i--) {
+					Sprite sprite = sprites.get(i);
+					if (sprite.isCollision(x, y)) {
+						sprites.remove(sprite);
+						//temps.add(new TempSprite(temps, this, x, y, bmpBlood));
+						view.updateScore(1);
+						break;
+					}
 				}
 			}
 		}
