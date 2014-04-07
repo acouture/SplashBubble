@@ -1,4 +1,4 @@
-package com.gadgetomobile.splashbubble;
+package com.blueweird.splashbubble;
 
 import java.util.Random;
 

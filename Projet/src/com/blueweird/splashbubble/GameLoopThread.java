@@ -1,7 +1,10 @@
-package com.gadgetomobile.splashbubble;
+package com.blueweird.splashbubble;
 
 import java.util.List;
 import java.util.Random;
+
+import com.blueweird.splashbubble.R;
+
 import android.graphics.Canvas;
 
 public class GameLoopThread extends Thread {

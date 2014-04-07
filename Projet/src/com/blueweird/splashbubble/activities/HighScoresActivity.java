@@ -1,4 +1,4 @@
-package com.gadgetomobile.splashbubble;
+package com.blueweird.splashbubble.activities;
 
 import java.io.FileNotFoundException;
 
@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.blueweird.splashbubble.GoodFuncs;
+import com.blueweird.splashbubble.R;
 
 public class HighScoresActivity extends BaseActivity {
 

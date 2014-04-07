@@ -1,4 +1,4 @@
-package com.gadgetomobile.splashbubble;
+package com.blueweird.splashbubble;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,7 +12,7 @@ public class GoodFuncs {
 
 	public static int NB_SCORES = 5;
 	
-	static Integer[] getHighScores(FileInputStream inputStream) {
+	public static Integer[] getHighScores(FileInputStream inputStream) {
 		Integer[] scores = new Integer[NB_SCORES];
 		for(int i = 0 ; i < NB_SCORES ; i++)
 			scores[i] = 0;
@@ -41,7 +41,7 @@ public class GoodFuncs {
     	return scores;
 	}
 	
-	static void setHighScores(Integer[] scores, FileOutputStream outputStream, int newScore) {
+	public static void setHighScores(Integer[] scores, FileOutputStream outputStream, int newScore) {
 		int i = 0;
 		while(i < NB_SCORES) {
 			if(newScore < scores[i])

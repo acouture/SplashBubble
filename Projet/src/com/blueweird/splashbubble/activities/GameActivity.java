@@ -1,4 +1,4 @@
-package com.gadgetomobile.splashbubble;
+package com.blueweird.splashbubble.activities;
 
 import java.io.FileNotFoundException;
 
@@ -11,6 +11,10 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.blueweird.splashbubble.GameView;
+import com.blueweird.splashbubble.GoodFuncs;
+import com.blueweird.splashbubble.R;
 
 public class GameActivity extends BaseActivity {
 

@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.gadgetomobile.splashbubble;
+package com.blueweird.splashbubble;
 
 public final class R {
     public static final class attr {

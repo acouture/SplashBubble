@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gadgetomobile.splashbubble"
-    android:versionCode="10"
+    package="com.blueweird.splashbubble"
+    android:versionCode="11"
     android:versionName="@string/version_name" >
 
     <uses-sdk
@@ -15,11 +15,11 @@
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
 
         <activity
-            android:name="com.gadgetomobile.splashbubble.GameActivity"
+            android:name="com.blueweird.splashbubble.activities.GameActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.gadgetomobile.splashbubble.MenuActivity"
+            android:name="com.blueweird.splashbubble.activities.MenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,11 +28,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.gadgetomobile.splashbubble.HighScoresActivity"
+            android:name="com.blueweird.splashbubble.activities.HighScoresActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.gadgetomobile.splashbubble.BaseActivity"
+        	android:name="com.blueweird.splashbubble.activities.BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
     </application>

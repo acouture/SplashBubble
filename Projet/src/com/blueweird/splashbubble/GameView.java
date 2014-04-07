@@ -1,7 +1,10 @@
-package com.gadgetomobile.splashbubble;
+package com.blueweird.splashbubble;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.blueweird.splashbubble.R;
+import com.blueweird.splashbubble.activities.GameActivity;
 
 import android.content.Context;
 import android.graphics.Bitmap;
