@@ -46,7 +46,6 @@ public class GameLoopThread extends Thread {
 			// Création des nouvelles bulles
 			if(toss < spawnRate) {
 				int bubble_color = rnd.nextInt(4);
-				System.out.println("couleur choisi : " + bubble_color);
 				switch(bubble_color) {
 				case 0:
 					view.addSprite(R.drawable.bubble_blue);
