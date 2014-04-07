@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 
 public class Sprite {
 
-	// direction = 0 up, 1 left, 2 down, 3 right,
 	private static final int MAX_SPEED = 8;
 
 	private GameView gameView;
@@ -28,20 +27,47 @@ public class Sprite {
 		this.bmp = bmp;
 
 		Random rnd = new Random();
-
-		x = rnd.nextInt(gameView.getWidth() - width);
-		y = rnd.nextInt(gameView.getHeight() - height);
-		xSpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
-		ySpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
+		// Les bulles vont poper hors de l'écran puis rentrer
+		// Choix du coté (gauche / bas / droite / haut)
+		int side = rnd.nextInt(4);
+		
+		if((side % 2) == 0) {
+			y = rnd.nextInt(gameView.getHeight() - height);
+			ySpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
+			if(side == 0) {
+				x = -width;
+				xSpeed = rnd.nextInt(MAX_SPEED);
+			}
+			else {
+				x = gameView.getWidth();
+				xSpeed = -rnd.nextInt(MAX_SPEED);
+			}
+		}
+		else {
+			x = rnd.nextInt(gameView.getWidth() - width);
+			xSpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
+			if(side == 1) {
+				y = gameView.getHeight();
+				ySpeed = -rnd.nextInt(MAX_SPEED);
+			}
+			else {
+				y = -height;
+				ySpeed = rnd.nextInt(MAX_SPEED);
+			}
+		}
 	}
 
 	private void update() {
-		if (x >= gameView.getWidth() - width - xSpeed || x + xSpeed <= 0)
+		if(x + xSpeed <= 0 && xSpeed < 0)
+			xSpeed = -xSpeed;
+		if (x + xSpeed >= gameView.getWidth() - width && xSpeed > 0)
 			xSpeed = -xSpeed;
 
 		x = x + xSpeed;
 
-		if (y >= gameView.getHeight() - height - ySpeed || y + ySpeed <= 0)
+		if(y + ySpeed <= 0 && ySpeed < 0)
+			ySpeed = -ySpeed;
+		if (y + ySpeed >= gameView.getHeight() - height && ySpeed > 0)
 			ySpeed = -ySpeed;
 
 		y = y + ySpeed;
