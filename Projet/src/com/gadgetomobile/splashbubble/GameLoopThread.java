@@ -11,6 +11,7 @@ public class GameLoopThread extends Thread {
 	private GameView view;
 
 	private boolean running = false;
+	private int spawnRate = 10;
 	
 	List<Sprite> sprites;
 	public GameLoopThread(GameView view) {
@@ -34,16 +35,18 @@ public class GameLoopThread extends Thread {
 
 		Random rnd = new Random();
 
-		long nextSpawnTime = System.currentTimeMillis() + rnd.nextLong() % 4000;
-
+		int toss;
+		
 		while (running) {
-			
-			Canvas c = null;
+
 			startTime = System.currentTimeMillis();
+			Canvas c = null;
+			toss = rnd.nextInt(100);
 			
 			// Création des nouvelles bulles
-			if(startTime > nextSpawnTime) {
-				int bubble_color = ( rnd.nextInt() % 4 );
+			if(toss < spawnRate) {
+				int bubble_color = rnd.nextInt(4);
+				System.out.println("couleur choisi : " + bubble_color);
 				switch(bubble_color) {
 				case 0:
 					view.addSprite(R.drawable.bubble_blue);
@@ -57,13 +60,10 @@ public class GameLoopThread extends Thread {
 				case 3:
 					view.addSprite(R.drawable.bubble_yellow);
 					break;
-				/*default:
-                	view.addSprite(R.drawable.ic_launcher);
-                	break;*/
+				default:
+//                	view.addSprite(R.drawable.ic_launcher);
+                	break;
 				}
-
-				rnd = new Random();
-				nextSpawnTime = System.currentTimeMillis()+ 500 + rnd.nextLong() % 1500;
 			}
 			
 			// Dessin
