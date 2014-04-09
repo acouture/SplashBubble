@@ -14,5 +14,9 @@
     <string name="action_play_pause">Jouer/Pause</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_game_play">GamePlayActivity</string>
+    <string name="game_play">Mode de jeu</string>
+    <string name="gp_infinite">Infini</string>
+    <string name="title_activity_high_scores_game_play">HighScoresGamePlayActivity</string>
 
 </resources>

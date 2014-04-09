@@ -9,39 +9,20 @@
     android:background="@drawable/background"
     tools:context=".MenuActivity" >
 
-    <TextView
-        android:id="@+id/textViewTitle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:text="Bienvenue dans"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textViewTitle2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewTitle1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="@string/app_name"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-    	android:textSize="42sp" />
-
     <Button
         android:id="@+id/buttonPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="125dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/play" />
+        android:text="@string/game_play" />
 
     <Button
         android:id="@+id/buttonScores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="125dp"
         android:layout_below="@+id/buttonPlay"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
@@ -51,6 +32,7 @@
         android:id="@+id/buttonQuit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="85dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
@@ -65,5 +47,15 @@
         android:text="@string/version_name"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#242424" />
+
+    <TextView
+        android:id="@+id/textViewTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="42sp" />
 
 </RelativeLayout>

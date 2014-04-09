@@ -42,6 +42,7 @@ public class HighScoresActivity extends BaseActivity {
 			textView = (TextView) findViewById(R.id.score5);
 			textView.setText(scores[4].toString());
 		}
+		
 		Button back = (Button) findViewById(R.id.buttonBack);
 		back.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {

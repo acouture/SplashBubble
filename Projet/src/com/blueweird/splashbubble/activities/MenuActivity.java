@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.blueweird.splashbubble.GamePlayActivity;
 import com.blueweird.splashbubble.R;
 
 public class MenuActivity extends BaseActivity {
@@ -32,7 +33,7 @@ public class MenuActivity extends BaseActivity {
 		Button play = (Button) findViewById(R.id.buttonPlay);
 		play.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Intent intent = new Intent(MenuActivity.this, GameActivity.class);
+				Intent intent = new Intent(MenuActivity.this, GamePlayActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -40,7 +41,7 @@ public class MenuActivity extends BaseActivity {
 		Button scores = (Button) findViewById(R.id.buttonScores);
 		scores.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Intent intent = new Intent(MenuActivity.this, HighScoresActivity.class);
+				Intent intent = new Intent(MenuActivity.this, HighScoresGamePlayActivity.class);
 				startActivity(intent);
 			}
 		});
