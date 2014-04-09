@@ -1,12 +1,6 @@
 package com.blueweird.splashbubble.activities;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import android.content.Intent;
-import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -46,26 +40,26 @@ public class MenuActivity extends BaseActivity {
 			}
 		});
 		
-		try {
-			FileInputStream file = openFileInput(getResources().getString(R.string.highScoresFile));
-			file.close();
-		} catch (FileNotFoundException e) {
-			FileOutputStream file;
-			try {
-				file = openFileOutput(getResources().getString(R.string.highScoresFile), MODE_PRIVATE);
-				file.close();
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
-			} catch (NotFoundException e1) {
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		} catch (NotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		// Vérification de l'existence des fichiers
+//		try {
+//			FileInputStream fileInput = openFileInput(getResources().getString(R.string.highScoresInfiniteFile));
+//			fileInput.close();
+//		} catch (FileNotFoundException e) {
+//			try {
+//				FileOutputStream fileOutput = openFileOutput(getResources().getString(R.string.highScoresInfiniteFile), MODE_PRIVATE);
+//				fileOutput.close();
+//			} catch (FileNotFoundException e1) {
+//				e1.printStackTrace();
+//			} catch (NotFoundException e1) {
+//				e1.printStackTrace();
+//			} catch (IOException e1) {
+//				e1.printStackTrace();
+//			}
+//		} catch (NotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	@Override

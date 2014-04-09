@@ -17,7 +17,7 @@ public class HighScoresActivity extends BaseActivity {
 		setContentView(R.layout.activity_high_scores);
 
 		Integer[] scores = null;
-		scores = getHighScores(getResources().getString(R.string.highScoresFile));
+		scores = getHighScores(getResources().getString(R.string.highScoresInfiniteFile));
 		TextView textView;
 
 		if(scores != null) {

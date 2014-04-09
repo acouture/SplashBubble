@@ -80,7 +80,7 @@ public final class R {
         public static final int gp_infinite=0x7f05000f;
         public static final int hello_world=0x7f05000c;
         public static final int highScores=0x7f050003;
-        public static final int highScoresFile=0x7f050005;
+        public static final int highScoresInfiniteFile=0x7f050005;
         public static final int play=0x7f050002;
         public static final int quit=0x7f050004;
         public static final int title_activity_base=0x7f05000b;
