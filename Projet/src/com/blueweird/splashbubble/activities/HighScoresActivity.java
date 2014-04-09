@@ -1,8 +1,5 @@
 package com.blueweird.splashbubble.activities;
 
-import java.io.FileNotFoundException;
-
-import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -10,7 +7,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.blueweird.splashbubble.GoodFuncs;
 import com.blueweird.splashbubble.R;
 
 public class HighScoresActivity extends BaseActivity {
@@ -21,13 +17,7 @@ public class HighScoresActivity extends BaseActivity {
 		setContentView(R.layout.activity_high_scores);
 
 		Integer[] scores = null;
-		try {
-			scores = GoodFuncs.getHighScores(openFileInput(getResources().getString(R.string.highScoresFile)));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (NotFoundException e) {
-			e.printStackTrace();
-		}
+		scores = getHighScores(getResources().getString(R.string.highScoresFile));
 		TextView textView;
 
 		if(scores != null) {
