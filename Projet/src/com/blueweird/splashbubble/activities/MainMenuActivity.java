@@ -7,35 +7,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.blueweird.splashbubble.GamePlayActivity;
 import com.blueweird.splashbubble.R;
 
-public class MenuActivity extends BaseActivity {
-
+public class MainMenuActivity extends BaseActivity {
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_menu);
+		setContentView(R.layout.activity_main_menu);
 		
-		Button quit = (Button) findViewById(R.id.buttonQuit);
-		quit.setOnClickListener(new OnClickListener() {
+		Button infiniteMode = (Button) findViewById(R.id.buttonPlay);
+		infiniteMode.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				finish();
-			}
-		});
-		
-		Button play = (Button) findViewById(R.id.buttonPlay);
-		play.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				Intent intent = new Intent(MenuActivity.this, GamePlayActivity.class);
-				startActivity(intent);
-			}
-		});
-		
-		Button scores = (Button) findViewById(R.id.buttonScores);
-		scores.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				Intent intent = new Intent(MenuActivity.this, HighScoresGamePlayActivity.class);
+				setGameplay(0);
+				Intent intent = new Intent(MainMenuActivity.this, GamePlayActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -68,5 +53,4 @@ public class MenuActivity extends BaseActivity {
 		getMenuInflater().inflate(R.menu.menu, menu);
 		return true;
 	}
-
 }

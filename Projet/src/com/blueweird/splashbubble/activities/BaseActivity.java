@@ -11,12 +11,14 @@ import java.io.IOException;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.View;
 
 import com.blueweird.splashbubble.R;
 
 public class BaseActivity extends Activity {
 
 	public static int NB_HIGH_SCORES_MAX = 5;
+	private static int gameplay = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -94,5 +96,17 @@ public class BaseActivity extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static int getGameplay() {
+		return gameplay;
+	}
+	
+	protected static void setGameplay(int g) {
+		gameplay = g;
+	}
+	
+	public void quitActivity(View v) {
+		finish();
 	}
 }

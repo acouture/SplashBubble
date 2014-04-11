@@ -18,7 +18,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.blueweird.splashbubble.activities.MenuActivity"
+            android:name="com.blueweird.splashbubble.activities.MainMenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +43,7 @@
                 android:value="com.blueweird.splashbubble.activities.BaseActivity" />
         </activity>
         <activity
-            android:name="com.blueweird.splashbubble.activities.HighScoresGamePlayActivity"
+            android:name="com.blueweird.splashbubble.activities.GamePlayActivity"
             android:label="@string/title_activity_high_scores_game_play" >
         </activity>
     </application>

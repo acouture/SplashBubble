@@ -5,32 +5,24 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 
 import com.blueweird.splashbubble.R;
 
-public class HighScoresGamePlayActivity extends BaseActivity {
+public class GamePlayActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_high_scores_game_play);
+		int gameplay = getGameplay();
+		switch(gameplay) {
+		case 0:
+			setContentView(R.layout.activity_infinite_menu);
+			break;
+		default:
+			// TODO: Afficher un dialog d'erreur
+			finish();
+		}
 		
-		Button infinite = (Button) findViewById(R.id.buttonInfinite);
-		infinite.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				Intent intent = new Intent(HighScoresGamePlayActivity.this, HighScoresActivity.class);
-				startActivity(intent);
-			}
-		});
-		
-		Button back = (Button) findViewById(R.id.buttonBack);
-		back.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				finish();
-			}
-		});
 	}
 
 	@Override
@@ -51,5 +43,15 @@ public class HighScoresGamePlayActivity extends BaseActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void infiniteGame(View v) {
+		Intent intent = new Intent(GamePlayActivity.this, GameActivity.class);
+		startActivity(intent);
+	}
+	
+	public void infiniteHighScores(View v) {
+		Intent intent = new Intent(GamePlayActivity.this, HighScoresActivity.class);
+		startActivity(intent);
 	}
 }

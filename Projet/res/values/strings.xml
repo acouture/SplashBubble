@@ -16,7 +16,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_game_play">GamePlayActivity</string>
     <string name="game_play">Mode de jeu</string>
-    <string name="gp_infinite">Infini</string>
+    <string name="infinite_mode">Mode infini</string>
     <string name="title_activity_high_scores_game_play">HighScoresGamePlayActivity</string>
 
 </resources>
