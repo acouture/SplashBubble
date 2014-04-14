@@ -3,18 +3,16 @@ package com.blueweird.splashbubble;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.blueweird.splashbubble.R;
-import com.blueweird.splashbubble.activities.GameActivity;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import com.blueweird.splashbubble.activities.GameActivity;
 
 public class GameView extends SurfaceView {
 	private GameActivity gameActivity;
@@ -24,7 +22,6 @@ public class GameView extends SurfaceView {
 	private Bitmap background;
 	private Rect bg;
 	private int score;
-	private Paint score_paint;
 
 	public GameView(Context context) {
 		super(context);
@@ -35,8 +32,6 @@ public class GameView extends SurfaceView {
 		this.gameActivity = parentActivity;
 		gameLoopThread = new GameLoopThread(this);
 		score = 0;
-		score_paint = new Paint();
-		score_paint.setTextSize(50);
 		getHolder().addCallback(new SurfaceHolder.Callback() {
 
 			@Override
