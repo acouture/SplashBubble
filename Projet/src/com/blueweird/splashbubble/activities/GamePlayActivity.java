@@ -13,10 +13,12 @@ public class GamePlayActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		int gameplay = getGameplay();
-		switch(gameplay) {
+		switch(getGameplay()) {
 		case 0:
 			setContentView(R.layout.activity_infinite_menu);
+			break;
+		case 1:
+			setContentView(R.layout.activity_classic_menu);
 			break;
 		default:
 			// TODO: Afficher un dialog d'erreur
@@ -51,6 +53,16 @@ public class GamePlayActivity extends BaseActivity {
 	}
 	
 	public void infiniteHighScores(View v) {
+		Intent intent = new Intent(GamePlayActivity.this, HighScoresActivity.class);
+		startActivity(intent);
+	}
+	
+	public void classicGame(View v) {
+		Intent intent = new Intent(GamePlayActivity.this, GameActivity.class);
+		startActivity(intent);
+	}
+	
+	public void classicHighScores(View v) {
 		Intent intent = new Intent(GamePlayActivity.this, HighScoresActivity.class);
 		startActivity(intent);
 	}

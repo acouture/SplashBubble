@@ -16,10 +16,19 @@ public class MainMenuActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_menu);
 		
-		Button infiniteMode = (Button) findViewById(R.id.buttonPlay);
+		Button infiniteMode = (Button) findViewById(R.id.buttonInfinite);
 		infiniteMode.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				setGameplay(0);
+				Intent intent = new Intent(MainMenuActivity.this, GamePlayActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		Button classicMode = (Button) findViewById(R.id.buttonClassic);
+		classicMode.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				setGameplay(1);
 				Intent intent = new Intent(MainMenuActivity.this, GamePlayActivity.class);
 				startActivity(intent);
 			}

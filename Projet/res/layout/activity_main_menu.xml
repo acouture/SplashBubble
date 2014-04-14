@@ -10,13 +10,23 @@
     tools:context="com.blueweird.splashbubble.activities.MainMenuActivity" >
 
     <Button
-        android:id="@+id/buttonPlay"
+        android:id="@+id/buttonInfinite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="125dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/infinite_mode" />
+
+    <Button
+        android:id="@+id/buttonClassic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="125dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/buttonInfinite"
+        android:layout_marginTop="20dp"
+        android:text="@string/classic_mode" />
 
     <Button
         android:id="@+id/buttonQuit"

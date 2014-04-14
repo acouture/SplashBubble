@@ -81,8 +81,8 @@ public class GameActivity extends BaseActivity {
     public void onBackPressed() {
     	view.stop();
     	// Sauvegarde des scores
-    	setHighScores(getHighScores(getResources().getString(R.string.highScoresInfiniteFile)),
-    			getResources().getString(R.string.highScoresInfiniteFile), view.getScore());
+    	setHighScores(getHighScores(getResources().getString(R.string.highScoresInfinite)),
+    			getResources().getString(R.string.highScoresInfinite), view.getScore());
     	finish();
     }
 

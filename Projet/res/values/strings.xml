@@ -6,7 +6,7 @@
     <string name="play">Jouer</string>
     <string name="highScores">Meilleurs scores</string>
     <string name="quit">Quitter</string>
-    <string name="highScoresInfiniteFile">highScoresInfinite</string>
+    <string name="highScoresInfinite">highScoresInfinite</string>
     <string name="defaultScore">Score : 0</string>
     <string name="back">Retour</string>
     <string name="version_name">1.2.6-beta</string>
@@ -18,5 +18,7 @@
     <string name="game_play">Mode de jeu</string>
     <string name="infinite_mode">Mode infini</string>
     <string name="title_activity_high_scores_game_play">HighScoresGamePlayActivity</string>
+    <string name="classic_mode">Mode classique</string>
+    <string name="highScoresClassic">highScoresClassic</string>
 
 </resources>

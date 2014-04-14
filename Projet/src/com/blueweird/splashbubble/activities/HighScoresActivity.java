@@ -12,9 +12,22 @@ public class HighScoresActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_high_scores);
-
+		String filename = null;
+		
+		switch(getGameplay()) {
+		case 0:
+			filename = getResources().getString(R.string.highScoresInfinite);
+			break;
+		case 1:
+			filename = getResources().getString(R.string.highScoresClassic);
+			break;
+		default:
+			// TODO: Afficher un dialog d'erreur
+			finish();
+		}
+		
 		Integer[] scores = null;
-		scores = getHighScores(getResources().getString(R.string.highScoresInfiniteFile));
+		scores = getHighScores(filename);
 		TextView textView;
 
 		if(scores != null) {
