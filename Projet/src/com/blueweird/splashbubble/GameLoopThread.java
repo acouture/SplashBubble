@@ -14,7 +14,8 @@ public class GameLoopThread extends Thread {
 	private GameView view;
 
 	private boolean running = false;
-	private int spawnRate = 10;
+	private double spawnPerSecond = 2;
+	private double spawnRate = 100 * spawnPerSecond / FPS;
 	
 	List<Sprite> sprites;
 	public GameLoopThread(GameView view) {
