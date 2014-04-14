@@ -22,14 +22,6 @@ public class GameLoopThread extends Thread {
 		sprites = view.getSprites();
 	}
 
-	public void setRunning(boolean run) {
-		running = run;
-	}
-	
-	public boolean isRunning() {
-		return running;
-	}
-
 	@Override
 	public void run() {
 		long ticksPS = 1000 / FPS;
@@ -93,7 +85,7 @@ public class GameLoopThread extends Thread {
 	}
 
 	public boolean touchEvent(float x, float y) {
-		if(isRunning()) {
+		if(running) {
 			synchronized (view.getHolder()) {
 				for (int i = sprites.size() - 1; i >= 0; i--) {
 					Sprite sprite = sprites.get(i);
@@ -107,5 +99,15 @@ public class GameLoopThread extends Thread {
 			}
 		}
 		return true;
+	}
+	
+	@Override
+	public synchronized void start() {
+		super.start();
+		running = true;
+	}
+	
+	public void stopRequest() {
+		running = false;
 	}
 }
