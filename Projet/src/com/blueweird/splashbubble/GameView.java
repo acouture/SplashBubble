@@ -17,8 +17,8 @@ import com.blueweird.splashbubble.activities.GameActivity;
 public class GameView extends SurfaceView {
 	private GameActivity gameActivity;
 	private GameLoopThread gameLoopThread;
-	private List<Sprite> sprites = new ArrayList<Sprite>();
-	private List<TempSprite> temps = new ArrayList<TempSprite>();
+	private List<Sprite> sprites;
+	private List<TempSprite> temps;
 	private Bitmap background;
 	private Rect bg;
 	private int score;
@@ -30,8 +30,10 @@ public class GameView extends SurfaceView {
 	public GameView(Context context, GameActivity parentActivity) {
 		super(context);
 		this.gameActivity = parentActivity;
-		gameLoopThread = new GameLoopThread(this);
+		sprites = new ArrayList<Sprite>();
+		temps = new ArrayList<TempSprite>();
 		score = 0;
+		
 		getHolder().addCallback(new SurfaceHolder.Callback() {
 
 			@Override
@@ -49,7 +51,7 @@ public class GameView extends SurfaceView {
 					int width, int height) {
 			}
 		});
-
+		
 		background = BitmapFactory.decodeResource(getResources(), R.drawable.background);
 
 		int screen_width = context.getResources().getDisplayMetrics().widthPixels;
@@ -59,7 +61,7 @@ public class GameView extends SurfaceView {
 	}
 
 	public void start() {
-		gameLoopThread = new GameLoopThread(this);
+		gameLoopThread = new InfiniteLoopThread(this);
 		gameLoopThread.start();
 	}
 
