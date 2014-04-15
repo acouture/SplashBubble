@@ -81,11 +81,26 @@ public class GameActivity extends BaseActivity {
     public void onBackPressed() {
     	view.stop();
     	// Sauvegarde des scores
-    	setHighScores(getHighScores(getResources().getString(R.string.highScoresInfinite)),
-    			getResources().getString(R.string.highScoresInfinite), view.getScore());
+    	saveScore();
     	finish();
     }
-
+    
+    private void saveScore() {
+    	String filename = null;
+    	switch (getGameplay()) {
+		case 0:
+			filename = getResources().getString(R.string.highScoresInfinite);
+			break;
+		case 1:
+			filename = getResources().getString(R.string.highScoresClassic);
+			break;
+		default:
+			break;
+		}
+    	if(filename != null)
+    		setHighScores(getHighScores(filename), filename, view.getScore());
+    }
+    
     public void updateScore() {
     	textScore.setText("Score : " + view.getScore());
 	}
