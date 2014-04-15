@@ -9,7 +9,7 @@ public abstract class GameLoopThread extends Thread {
 	static final int FPS = 20;
 
 	protected GameView view;
-	protected List<Sprite> sprites;
+	protected List<Bubble> bubbles;
 	protected boolean running = false;
 
 	protected long ticksPS = 1000 / FPS;
@@ -20,7 +20,7 @@ public abstract class GameLoopThread extends Thread {
 	public GameLoopThread(GameView v) {
 		view = v;
 		running = false;
-		sprites = view.getSprites();
+		bubbles = view.getSprites();
 	}
 	
 	@Override

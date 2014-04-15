@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 
 import android.graphics.Canvas;
 
-public class Sprite {
+public class Bubble {
 
 	protected static final int MAX_SPEED = 8;
 
@@ -19,12 +19,14 @@ public class Sprite {
 	protected int ySpeed;
 	protected int width;
 	protected int height;
+	protected int type;
 
-	public Sprite(GameView gameView, Bitmap bmp) {
+	public Bubble(GameView gameView, Bitmap bmp, int type) {
 		this.width = bmp.getWidth();
 		this.height = bmp.getHeight();
 		this.gameView = gameView;
 		this.bmp = bmp;
+		this.type = type;
 
 		Random rnd = new Random();
 		// Les bulles vont poper hors de l'écran puis rentrer
@@ -84,5 +86,9 @@ public class Sprite {
 
 	public boolean isCollision(float x2, float y2) {
 		return x2 > x && x2 < x + width && y2 > y && y2 < y + height;
+	}
+	
+	public int getType() {
+		return type;
 	}
 }

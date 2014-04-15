@@ -21,11 +21,10 @@ public class InfiniteLoopThread extends GameLoopThread {
 	public boolean touchEvent(float x, float y) {
 		if(running) {
 			synchronized (view.getHolder()) {
-				for (int i = sprites.size() - 1; i >= 0; i--) {
-					Sprite sprite = sprites.get(i);
-					if (sprite.isCollision(x, y)) {
-						sprites.remove(sprite);
-						//temps.add(new TempSprite(temps, this, x, y, bmpBlood));
+				for (int i = bubbles.size() - 1; i >= 0; i--) {
+					Bubble bubble = bubbles.get(i);
+					if (bubble.isCollision(x, y)) {
+						bubbles.remove(bubble);
 						view.updateScore(1);
 						break;
 					}
@@ -60,7 +59,7 @@ public class InfiniteLoopThread extends GameLoopThread {
             	break;
 			}
 			if(bmp != null)
-				sprites.add(new Sprite(view, bmp));
+				bubbles.add(new Bubble(view, bmp, bubble_color));
 		}
 	}
 }

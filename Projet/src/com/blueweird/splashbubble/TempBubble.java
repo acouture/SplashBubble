@@ -5,14 +5,14 @@ import java.util.List;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-public class TempSprite extends Sprite {
+public class TempBubble extends Bubble {
 
 	private int life;
 
-	List<Sprite> sprites;
+	List<Bubble> sprites;
 	
-	public TempSprite(GameView v, Bitmap bmp, int life) {
-		super(v, bmp);
+	public TempBubble(GameView v, Bitmap bmp, int type, int life) {
+		super(v, bmp, type);
 		this.life = life;
 	}
 

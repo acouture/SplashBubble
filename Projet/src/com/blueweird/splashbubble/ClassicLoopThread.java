@@ -12,6 +12,10 @@ public class ClassicLoopThread extends GameLoopThread {
 
 	private Random rnd;
 	private int toss;
+	private int life = 5 * FPS;
+	
+	int bonus = 0;
+	private int lastColor = -1;
 	
 	public ClassicLoopThread(GameView v) {
 		super(v);
@@ -21,12 +25,16 @@ public class ClassicLoopThread extends GameLoopThread {
 	public boolean touchEvent(float x, float y) {
 		if(running) {
 			synchronized (view.getHolder()) {
-				for (int i = sprites.size() - 1; i >= 0; i--) {
-					Sprite sprite = sprites.get(i);
-					if (sprite.isCollision(x, y)) {
-						sprites.remove(sprite);
-						//temps.add(new TempSprite(temps, this, x, y, bmpBlood));
-						view.updateScore(1);
+				for (int i = bubbles.size() - 1; i >= 0; i--) {
+					Bubble bubble = bubbles.get(i);
+					if (bubble.isCollision(x, y)) {
+						bubbles.remove(bubble);
+						if(lastColor == bubble.getType())
+							bonus++;
+						else
+							bonus = 0;
+						lastColor = bubble.getType();
+						view.updateScore(1 + bonus);
 						break;
 					}
 				}
@@ -43,7 +51,6 @@ public class ClassicLoopThread extends GameLoopThread {
 		if(toss < spawnRate) {
 			int bubble_color = rnd.nextInt(4);
 			Bitmap bmp = null;
-			int life = 5 * FPS;
 			switch(bubble_color) {
 			case 0:
 				bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.bubble_blue);
@@ -62,14 +69,14 @@ public class ClassicLoopThread extends GameLoopThread {
             	break;
 			}
 			if(bmp != null)
-				sprites.add(new TempSprite(view, bmp, life));
+				bubbles.add(new TempBubble(view, bmp, bubble_color, life));
 		}
 		
 		// Suppression des bulles mortent
-		for(int i = 0; i < sprites.size(); i++) {
-			TempSprite sprite = (TempSprite) sprites.get(i);
-			if(sprite.isDead())
-				sprites.remove(sprite);
+		for(int i = 0; i < bubbles.size(); i++) {
+			TempBubble bubble = (TempBubble) bubbles.get(i);
+			if(bubble.isDead())
+				bubbles.remove(bubble);
 		}
 	}
 }

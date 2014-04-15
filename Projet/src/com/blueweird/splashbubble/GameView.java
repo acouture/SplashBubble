@@ -17,7 +17,7 @@ import com.blueweird.splashbubble.activities.GameActivity;
 public class GameView extends SurfaceView {
 	private GameActivity gameActivity;
 	private GameLoopThread gameLoopThread;
-	private List<Sprite> sprites;
+	private List<Bubble> sprites;
 	private Bitmap background;
 	private Rect bg;
 	private int score;
@@ -29,7 +29,7 @@ public class GameView extends SurfaceView {
 	public GameView(Context context, GameActivity parentActivity) {
 		super(context);
 		this.gameActivity = parentActivity;
-		sprites = new ArrayList<Sprite>();
+		sprites = new ArrayList<Bubble>();
 		score = 0;
 		
 		getHolder().addCallback(new SurfaceHolder.Callback() {
@@ -88,7 +88,7 @@ public class GameView extends SurfaceView {
 	public void draw(Canvas canvas) {
 		canvas.drawBitmap(background, null, bg, null);
 
-		for (Sprite sprite : sprites) {
+		for (Bubble sprite : sprites) {
 			sprite.draw(canvas);
 		}
 	}
@@ -111,7 +111,7 @@ public class GameView extends SurfaceView {
 		score += toAdd;
 	}
 	
-	public List<Sprite> getSprites() {
+	public List<Bubble> getSprites() {
 		return sprites;
 	}
 }
