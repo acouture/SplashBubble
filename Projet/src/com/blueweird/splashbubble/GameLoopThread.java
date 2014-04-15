@@ -6,11 +6,11 @@ import android.graphics.Canvas;
 
 public abstract class GameLoopThread extends Thread {
 
-	static final long FPS = 20;
+	static final int FPS = 20;
 
 	protected GameView view;
 	protected List<Sprite> sprites;
-	protected boolean running;
+	protected boolean running = false;
 
 	protected long ticksPS = 1000 / FPS;
 	protected long startTime;

@@ -2,6 +2,9 @@ package com.blueweird.splashbubble;
 
 import java.util.Random;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 public class InfiniteLoopThread extends GameLoopThread {
 
 	private double spawnPerSecond = 1;
@@ -39,23 +42,25 @@ public class InfiniteLoopThread extends GameLoopThread {
 		// Création des nouvelles bulles
 		if(toss < spawnRate) {
 			int bubble_color = rnd.nextInt(4);
+			Bitmap bmp = null;
 			switch(bubble_color) {
 			case 0:
-				view.addSprite(R.drawable.bubble_blue);
+				bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.bubble_blue);
 				break;
 			case 1:
-				view.addSprite(R.drawable.bubble_green);
+				bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.bubble_green);
 				break;
 			case 2:
-				view.addSprite(R.drawable.bubble_red);
+				bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.bubble_red);
 				break;
 			case 3:
-				view.addSprite(R.drawable.bubble_yellow);
+				bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.bubble_yellow);
 				break;
 			default:
-//            	view.addSprite(R.drawable.ic_launcher);
             	break;
 			}
+			if(bmp != null)
+				sprites.add(new Sprite(view, bmp));
 		}
 	}
 }

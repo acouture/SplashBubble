@@ -8,17 +8,17 @@ import android.graphics.Canvas;
 
 public class Sprite {
 
-	private static final int MAX_SPEED = 8;
+	protected static final int MAX_SPEED = 8;
 
-	private GameView gameView;
-	private Bitmap bmp;
+	protected GameView gameView;
+	protected Bitmap bmp;
 
-	private int x = 0;
-	private int y = 0;
-	private int xSpeed;
-	private int ySpeed;
-	private int width;
-	private int height;
+	protected int x = 0;
+	protected int y = 0;
+	protected int xSpeed;
+	protected int ySpeed;
+	protected int width;
+	protected int height;
 
 	public Sprite(GameView gameView, Bitmap bmp) {
 		this.width = bmp.getWidth();
@@ -57,7 +57,7 @@ public class Sprite {
 		}
 	}
 
-	private void update() {
+	protected void updateSprite() {
 		if(x + xSpeed <= 0 && xSpeed < 0)
 			xSpeed = -xSpeed;
 		if (x + xSpeed >= gameView.getWidth() - width && xSpeed > 0)
@@ -73,6 +73,10 @@ public class Sprite {
 		y = y + ySpeed;
 	}
 
+	protected void update() {
+		updateSprite();
+	}
+	
 	public void draw(Canvas canvas) {
 		update();
 		canvas.drawBitmap(bmp, x, y, null);

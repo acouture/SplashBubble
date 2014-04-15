@@ -3,29 +3,17 @@ package com.blueweird.splashbubble;
 import java.util.List;
 
 import android.graphics.Bitmap;
-
 import android.graphics.Canvas;
 
-public class TempSprite {
+public class TempSprite extends Sprite {
 
-	private float x;
-	private float y;
+	private int life;
 
-	private Bitmap bmp;
-
-	private int life = 15;
-
-	private List<TempSprite> temps;
-
-	public TempSprite(List<TempSprite> temps, GameView gameView, float x,
-			float y, Bitmap bmp) {
-
-		this.x = Math.min(Math.max(x - bmp.getWidth() / 2, 0),
-				gameView.getWidth() - bmp.getWidth());
-		this.y = Math.min(Math.max(y - bmp.getHeight() / 2, 0),
-				gameView.getHeight() - bmp.getHeight());
-		this.bmp = bmp;
-		this.temps = temps;
+	List<Sprite> sprites;
+	
+	public TempSprite(GameView v, Bitmap bmp, int life) {
+		super(v, bmp);
+		this.life = life;
 	}
 
 	public void draw(Canvas canvas) {
@@ -33,9 +21,14 @@ public class TempSprite {
 		canvas.drawBitmap(bmp, x, y, null);
 	}
 
-	private void update() {
-		if (--life < 1) {
-			temps.remove(this);
-		}
+	protected void update() {
+		super.updateSprite();
+		life--;
+	}
+	
+	public boolean isDead() {
+		if(life < 0)
+			return true;
+		return false;
 	}
 }

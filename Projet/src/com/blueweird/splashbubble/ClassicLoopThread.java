@@ -2,6 +2,9 @@ package com.blueweird.splashbubble;
 
 import java.util.Random;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 public class ClassicLoopThread extends GameLoopThread {
 
 	private double spawnPerSecond = 1;
@@ -39,23 +42,34 @@ public class ClassicLoopThread extends GameLoopThread {
 		// Création des nouvelles bulles
 		if(toss < spawnRate) {
 			int bubble_color = rnd.nextInt(4);
+			Bitmap bmp = null;
+			int life = 5 * FPS;
 			switch(bubble_color) {
 			case 0:
-				view.addSprite(R.drawable.bubble_blue);
+				bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.bubble_blue);
 				break;
 			case 1:
-				view.addSprite(R.drawable.bubble_green);
+				bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.bubble_green);
 				break;
 			case 2:
-				view.addSprite(R.drawable.bubble_red);
+				bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.bubble_red);
 				break;
 			case 3:
-				view.addSprite(R.drawable.bubble_yellow);
+				bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.bubble_yellow);
 				break;
 			default:
-//            	view.addSprite(R.drawable.ic_launcher);
+				System.out.println("no bulle");
             	break;
 			}
+			if(bmp != null)
+				sprites.add(new TempSprite(view, bmp, life));
+		}
+		
+		// Suppression des bulles mortent
+		for(int i = 0; i < sprites.size(); i++) {
+			TempSprite sprite = (TempSprite) sprites.get(i);
+			if(sprite.isDead())
+				sprites.remove(sprite);
 		}
 	}
 }

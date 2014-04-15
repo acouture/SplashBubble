@@ -18,7 +18,6 @@ public class GameView extends SurfaceView {
 	private GameActivity gameActivity;
 	private GameLoopThread gameLoopThread;
 	private List<Sprite> sprites;
-	private List<TempSprite> temps;
 	private Bitmap background;
 	private Rect bg;
 	private int score;
@@ -31,7 +30,6 @@ public class GameView extends SurfaceView {
 		super(context);
 		this.gameActivity = parentActivity;
 		sprites = new ArrayList<Sprite>();
-		temps = new ArrayList<TempSprite>();
 		score = 0;
 		
 		getHolder().addCallback(new SurfaceHolder.Callback() {
@@ -61,7 +59,14 @@ public class GameView extends SurfaceView {
 	}
 
 	public void start() {
-		gameLoopThread = new InfiniteLoopThread(this);
+		switch(GameActivity.getGameplay()) {
+		case 0:
+			gameLoopThread = new InfiniteLoopThread(this);
+			break;
+		case 1:
+			gameLoopThread = new ClassicLoopThread(this);
+			break;
+		}
 		gameLoopThread.start();
 	}
 
@@ -80,21 +85,8 @@ public class GameView extends SurfaceView {
 		return gameLoopThread.isAlive();
 	}
 
-	private Sprite createSprite(int resource) {
-		Bitmap bmp = BitmapFactory.decodeResource(getResources(), resource);
-		return new Sprite(this, bmp);
-	}
-
-	public void addSprite(int resource) {
-		sprites.add(createSprite(resource));
-	}
-
 	public void draw(Canvas canvas) {
 		canvas.drawBitmap(background, null, bg, null);
-
-		for (int i = temps.size() - 1; i >= 0; i--) {
-			temps.get(i).draw(canvas);
-		}
 
 		for (Sprite sprite : sprites) {
 			sprite.draw(canvas);
