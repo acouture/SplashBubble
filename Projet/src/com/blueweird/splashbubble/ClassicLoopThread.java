@@ -2,7 +2,7 @@ package com.blueweird.splashbubble;
 
 import java.util.Random;
 
-public class InfiniteLoopThread extends GameLoopThread {
+public class ClassicLoopThread extends GameLoopThread {
 
 	private double spawnPerSecond = 1;
 	private double spawnRate = 100 * spawnPerSecond / FPS;
@@ -10,7 +10,7 @@ public class InfiniteLoopThread extends GameLoopThread {
 	private Random rnd;
 	private int toss;
 	
-	public InfiniteLoopThread(GameView v) {
+	public ClassicLoopThread(GameView v) {
 		super(v);
 		rnd = new Random();
 	}
