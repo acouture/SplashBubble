@@ -103,7 +103,11 @@ public class GameView extends SurfaceView {
 		return true;
 	}
 	
-	public int getScore() {
+	public GameLoopThread getGameLoopThread() {
+		return gameLoopThread;
+	}
+	
+	public Integer getScore() {
 		return score;
 	}
 	

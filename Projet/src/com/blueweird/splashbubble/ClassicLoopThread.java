@@ -14,7 +14,7 @@ public class ClassicLoopThread extends GameLoopThread {
 	private int toss;
 	private int life = 5 * FPS;
 	
-	int bonus = 0;
+	private int bonus = 0;
 	private int lastColor = -1;
 	
 	public ClassicLoopThread(GameView v) {
@@ -78,5 +78,13 @@ public class ClassicLoopThread extends GameLoopThread {
 			if(bubble.isDead())
 				bubbles.remove(bubble);
 		}
+	}
+	
+	public Integer getBonus() {
+		return bonus;
+	}
+	
+	public Integer getLastColor() {
+		return lastColor;
 	}
 }

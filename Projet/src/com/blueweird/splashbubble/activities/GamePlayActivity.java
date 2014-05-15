@@ -48,7 +48,7 @@ public class GamePlayActivity extends BaseActivity {
 	}
 	
 	public void infiniteGame(View v) {
-		Intent intent = new Intent(GamePlayActivity.this, GameActivity.class);
+		Intent intent = new Intent(GamePlayActivity.this, GameInfiniteActivity.class);
 		startActivity(intent);
 	}
 	
@@ -58,7 +58,7 @@ public class GamePlayActivity extends BaseActivity {
 	}
 	
 	public void classicGame(View v) {
-		Intent intent = new Intent(GamePlayActivity.this, GameActivity.class);
+		Intent intent = new Intent(GamePlayActivity.this, GameClassicActivity.class);
 		startActivity(intent);
 	}
 	
