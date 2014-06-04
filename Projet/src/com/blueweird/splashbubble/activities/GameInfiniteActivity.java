@@ -101,7 +101,7 @@ public class GameInfiniteActivity extends GameActivity {
     		setHighScores(getHighScores(filename), filename, view.getScore());
     }
     
-    public void updateScore() {
+    public void updateUI() {
     	textScore.setText("Score : " + view.getScore());
 	}
 }

@@ -14,6 +14,9 @@ public class ClassicLoopThread extends GameLoopThread {
 	private int toss;
 	private int life = 5 * FPS;
 	
+	private int comboDelay = 3 * FPS;
+	private int cooldown = 0;
+	
 	private int bonus = 0;
 	private int lastColor = -1;
 	
@@ -32,7 +35,8 @@ public class ClassicLoopThread extends GameLoopThread {
 						if(lastColor == bubble.getType())
 							bonus++;
 						else
-							bonus = 0;
+							resetBonus();
+						restartCooldown();
 						lastColor = bubble.getType();
 						view.updateScore(1 + bonus);
 						break;
@@ -65,12 +69,15 @@ public class ClassicLoopThread extends GameLoopThread {
 				bmp = BitmapFactory.decodeResource(view.getResources(), R.drawable.bubble_yellow);
 				break;
 			default:
-				System.out.println("no bulle");
+				System.out.println("WARN: no bubble created.");
             	break;
 			}
 			if(bmp != null)
 				bubbles.add(new TempBubble(view, bmp, bubble_color, life));
 		}
+		
+		if (cooldown -- < 0)
+			resetCooldown();
 		
 		// Suppression des bulles mortent
 		for(int i = 0; i < bubbles.size(); i++) {
@@ -78,6 +85,19 @@ public class ClassicLoopThread extends GameLoopThread {
 			if(bubble.isDead())
 				bubbles.remove(bubble);
 		}
+	}
+	
+	private void resetBonus() {
+		bonus = 0;
+	}
+	
+	private void restartCooldown() {
+		cooldown = comboDelay;
+	}
+	
+	private void resetCooldown() {
+		restartCooldown();
+		resetBonus();
 	}
 	
 	public Integer getBonus() {

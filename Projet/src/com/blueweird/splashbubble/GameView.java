@@ -98,7 +98,7 @@ public class GameView extends SurfaceView {
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
 			System.currentTimeMillis();
 			gameLoopThread.touchEvent(event.getX(), event.getY());
-			gameActivity.updateScore();
+			gameActivity.updateUI();
 		}
 		return true;
 	}

@@ -15,8 +15,8 @@ public class Bubble {
 
 	protected int x = 0;
 	protected int y = 0;
-	protected int xSpeed;
-	protected int ySpeed;
+	protected int xSpeed = 0;
+	protected int ySpeed = 0;
 	protected int width;
 	protected int height;
 	protected int type;
@@ -34,28 +34,34 @@ public class Bubble {
 		int side = rnd.nextInt(4);
 		
 		if((side % 2) == 0) {
-			y = rnd.nextInt(gameView.getHeight() - height);
-			ySpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
-			if(side == 0) {
+			// position aléatoire sauf dans les coins
+			// La vistesse doit être principalement horizontale
+			// donc xSpeed > ySpeed
+			if(side == 0) { // gauche
 				x = -width;
-				xSpeed = rnd.nextInt(MAX_SPEED);
+				while ( xSpeed == 0 ) xSpeed = rnd.nextInt(MAX_SPEED);
 			}
-			else {
+			else { // droite
 				x = gameView.getWidth();
-				xSpeed = -rnd.nextInt(MAX_SPEED);
+				while ( xSpeed == 0 ) xSpeed = -rnd.nextInt(MAX_SPEED);
 			}
+			y = height + rnd.nextInt(gameView.getHeight() - 2*height);
+			ySpeed = xSpeed + 1;
+			while (ySpeed > xSpeed) ySpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
 		}
 		else {
-			x = rnd.nextInt(gameView.getWidth() - width);
-			xSpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
-			if(side == 1) {
+			// Ici ySpeed > xSpeed
+			if(side == 1) { // bas
 				y = gameView.getHeight();
-				ySpeed = -rnd.nextInt(MAX_SPEED);
+				while ( ySpeed == 0 ) ySpeed = -rnd.nextInt(MAX_SPEED);
 			}
-			else {
+			else { // haut
 				y = -height;
-				ySpeed = rnd.nextInt(MAX_SPEED);
+				while ( ySpeed == 0 ) ySpeed = rnd.nextInt(MAX_SPEED);
 			}
+			x = width + rnd.nextInt(gameView.getWidth() - 2*width);
+			xSpeed = ySpeed + 1;
+			while (xSpeed > ySpeed) xSpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
 		}
 	}
 

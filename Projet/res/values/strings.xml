@@ -7,9 +7,9 @@
     <string name="highScores">Meilleurs scores</string>
     <string name="quit">Quitter</string>
     <string name="highScoresInfinite">highScoresInfinite</string>
-    <string name="score">Score : </string>
-    <string name="bonus">Bonus : </string>
-    <string name="combo">Combo : </string>
+    <string name="score">Score</string>
+    <string name="bonus">Bonus</string>
+    <string name="combo">Combo</string>
     <string name="default_score">0</string>
     <string name="none">Aucune</string>
     <string name="back">Retour</string>

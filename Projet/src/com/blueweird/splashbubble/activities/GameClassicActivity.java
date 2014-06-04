@@ -106,7 +106,7 @@ public class GameClassicActivity extends GameActivity {
     		setHighScores(getHighScores(filename), filename, view.getScore());
     }
     
-    public void updateScore() {
+    public void updateUI() {
     	scoreValue.setText(view.getScore().toString());
     	ClassicLoopThread clt = (ClassicLoopThread) view.getGameLoopThread();
     	Integer b = clt.getBonus() + 1;
